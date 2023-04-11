@@ -24,24 +24,47 @@ function Home () {
     
    }
 
-   const random = Math.floor(Math.random() * 101);
-    
+        const random = Math.floor(Math.random() * 101);
+        var OnlyAl = /^[A-Za-z]+$/;
+
      
          function Calculatelove ()  {
 
-            if (yourname < 3 && partner < 3 ) {
+
+            if (yourname ==="" && partner === "" ) {
                    setError (" 🚫 Please refresh and Insert Partners name")
+                   
                   }
                   
-                  else {
-                  return setLove(random)
+                  
+                  else if (yourname < 3 && partner < 3 ){
+                  setError (" 🚫 Please enter a valid name")
+                  
+                }
+                else if (Number.isNaN(yourname) && Number.isNaN(partner)) {
+                    setError (" 🚫 Please enter a valid name")
+                    
+                }
+                else if (!yourname.match(OnlyAl) && !partner.match(OnlyAl)){
+                     setError( " 🚫 Please enter a valid name" )
+                     
+                     }
+                else {
+                    return setLove(random)
                 }
            
             }
 
             function calculateComment () {
+
                 if (yourname === "" && partner === "") {
                     return setComment("")
+                }
+                else if (!yourname.match(OnlyAl) && !partner.match(OnlyAl)){
+                    setComment( "" )
+                    }
+                else if (yourname < 3 && partner < 3) {
+                    return setComment ("")
                 }
                 else if (random < 50) {
                  return setComment(random + "%" + " Oops " + yourname + " and " + partner + " are not Compatible😔💔 ")
@@ -131,6 +154,7 @@ function Home () {
        
         </div>
         <h3>BrightWeb © 2023</h3>
+        <p>dareisrael4@gmail.com</p>
         </div>
     )
 }
